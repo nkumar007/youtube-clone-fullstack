@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useState, useEffect } from "react";
-import { onAuthStateChangedHelper } from "../utils/firebase/firebase";
-import { User } from "firebase/auth";
+import {useState, useEffect} from "react";
+import {onAuthStateChangedHelper} from "../utils/firebase/firebase";
+import {User} from "firebase/auth";
 import SignIn from "./SignIn";
+import Upload from "./upload";
 
 const Navbar = () => {
   // Initialize use state
@@ -30,6 +31,7 @@ const Navbar = () => {
           alt="YouTube Logo"
         />
       </Link>
+      {user && <Upload />}
       <SignIn user={user} />
     </nav>
   );
