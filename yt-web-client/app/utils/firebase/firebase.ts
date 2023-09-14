@@ -7,20 +7,22 @@ import {
   onAuthStateChanged,
   User,
 } from "firebase/auth";
+import {getFunctions} from "firebase/functions";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAz8TA-3_Q62W86OMSjtBiYVfTqocfiVLw",
-  authDomain: "yt-clone-4e578.firebaseapp.com",
-  projectId: "yt-clone-4e578",
-  appId: "1:526546720537:web:5d5f0a4c6a0332a0f4d788",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+export const functions = getFunctions(app);
 
 /**
  * Signs the user in with a Google popup.
