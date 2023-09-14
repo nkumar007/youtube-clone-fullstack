@@ -1,7 +1,16 @@
-import React from "react";
+"use client";
 
-const WatchPage = () => {
-  return <div>WatchPage</div>;
-};
+import {useSearchParams} from "next/navigation";
 
-export default WatchPage;
+export default function Watch() {
+  const videoPrefix =
+    "https://storage.googleapis.com/processed-nk-video-bucket/";
+  const videoSrc = useSearchParams().get("v");
+
+  return (
+    <div>
+      <h1>Watch Page</h1>
+      {<video controls src={videoPrefix + videoSrc} />}
+    </div>
+  );
+}
